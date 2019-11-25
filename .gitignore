@@ -1,3 +1,9 @@
+**.idea/
+**/config/
+**/media/
+**/img/*
+**/__*
+**/wsgi.*
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
