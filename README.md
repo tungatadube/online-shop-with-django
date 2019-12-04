@@ -1,5 +1,5 @@
 # online-shop-with-django
-A base template for an online shop
+- A base template for an online shop
 CRUD for products and categories
 Managing user sessions and storing products in a shopping cart
 Using Celery and RabbitMQ to asyncronously send orders to the admin email
