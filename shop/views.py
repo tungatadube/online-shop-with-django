@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404, render
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
+from cart.forms import CartAddProductForm
 from shop.models import Category, Product
 from shop.serializers import ProductSerializer
 
@@ -27,7 +28,8 @@ class ProductViewSet(ModelViewSet):
 
 def product_detail(request, pk, ):
     product = get_object_or_404(Product, id=pk, available=True)
-    return render(request, "shop/product/detail.html", {"product": product})
+    cart_product_form = CartAddProductForm()
+    return render(request, "shop/product/detail.html", {"product": product, 'cart_product_form': cart_product_form})
 
 
 def product_list(request, category_slug=None, ):
