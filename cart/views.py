@@ -33,3 +33,4 @@ def cart_detail(request):
                      }
         )
     return render(request, 'cart/detail.html', {'cart': cart})
+
