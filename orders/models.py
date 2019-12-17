@@ -7,7 +7,7 @@ from shop.models import Product
 class Order(TimestampedModel):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    email = models.EmailField
+    email = models.EmailField(null=True)
     address = models.CharField(max_length=250)
     area_code = models.CharField(max_length=5)
     city = models.CharField(max_length=30)
