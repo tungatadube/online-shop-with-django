@@ -10,15 +10,21 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
+import logging
 import os
 
 from myshop.config.parameters import db
-
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # '/home/frederick/Documents/practice/django/django2byexample/myshop/myshop'
+logfile = BASE_DIR + "/logs/myshop.log"
+logging.basicConfig(level=logging.INFO, filename=logfile,
+                    format='%(asctime)s - %(name)s - %(lineno)d - %(levelname)s - %(message)s',
+                    )
+logger = logging.getLogger(__name__)
+logger.info("In base settings..")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -43,7 +49,7 @@ INSTALLED_APPS = [
     'shop.apps.ShopConfig',
     'cart.apps.CartConfig',
     'rest_framework',
-	'orders.apps.OrdersConfig',
+    'orders.apps.OrdersConfig',
 ]
 
 MIDDLEWARE = [

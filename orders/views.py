@@ -1,9 +1,13 @@
+import logging
+
 from django.shortcuts import render
 
 # Create your views here.
 from cart.cart import Cart
 from orders.forms import OrderCreateForm
 from orders.models import OrderItem
+
+logger = logging.getLogger(__name__)
 
 
 def order_create(request):
@@ -21,6 +25,7 @@ def order_create(request):
                 )
 
             # clear the cart
+            logger.info("Clearing cart after successful post")
             cart.clear()
             return render(request, 'orders/order/created.html', {'order': order})
     else:
