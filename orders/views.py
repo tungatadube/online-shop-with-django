@@ -6,6 +6,7 @@ from django.shortcuts import render
 from cart.cart import Cart
 from orders.forms import OrderCreateForm
 from orders.models import OrderItem
+from orders.tasks import order_created
 
 logger = logging.getLogger(__name__)
 
@@ -27,6 +28,9 @@ def order_create(request):
             # clear the cart
             logger.info("Clearing cart after successful post")
             cart.clear()
+            logger.info(f"Launching asynchronous email task for order {order.id}")
+            order_created.delay(order.id)
+
             return render(request, 'orders/order/created.html', {'order': order})
     else:
         form = OrderCreateForm()

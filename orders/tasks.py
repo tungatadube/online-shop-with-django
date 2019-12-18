@@ -4,6 +4,7 @@ from django.core.mail import send_mail
 from .models import Order
 from conf.parameters import username
 
+
 @task
 def order_created(order_id):
     """
