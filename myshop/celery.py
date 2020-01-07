@@ -4,7 +4,7 @@ import logging
 from django.conf import settings
 from celery import Celery
 
-settings_module = settings.__module__
+settings_module = settings.SETTINGS_MODULE
 
 logger = logging.getLogger(__name__)
 logger.info(f'Setting the default Django_SETTINGS_MODULE as {settings_module} for the celery program')
