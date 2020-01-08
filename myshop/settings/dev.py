@@ -1,6 +1,8 @@
 from django.core.mail import send_mail
 
-from conf.parameters import username, password
+from braintree import Configuration, Environment
+
+import conf.parameters as secret
 from .base import *
 
 MEDIA_URL = BASE_DIR + "/media/"
@@ -12,8 +14,8 @@ STATIC_ROOT = STATIC_URL
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
-EMAIL_HOST_USER = username
-EMAIL_HOST_PASSWORD = password
+EMAIL_HOST_USER = secret.username
+EMAIL_HOST_PASSWORD = secret.password
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
@@ -30,6 +32,18 @@ if checks:
     try:
 
         send()
-        logger.info(f"Email from {username} to {list_of_emails} was successful")
+        logger.info(f"Email from {secret.username} to {list_of_emails} was successful")
     except Exception as e:
         logger.info(f"{e}")
+
+#Braintree
+BRAINTREE_MERCHANT_ID = secret.BRAINTREE_MERCHANT_ID
+BRAINTREE_PUBLIC_KEY = secret.BRAINTREE_PUBLIC_KEY
+BRAINTREE_PRIVATE_KEY = secret.BRAINTREE_PRIVATE_KEY
+
+Configuration.configure(
+    Environment.Sandbox,
+    BRAINTREE_MERCHANT_ID,
+    BRAINTREE_PUBLIC_KEY,
+    BRAINTREE_PRIVATE_KEY
+)

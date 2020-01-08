@@ -12,6 +12,7 @@ class Order(TimestampedModel):
     area_code = models.CharField(max_length=5)
     city = models.CharField(max_length=30)
     paid = models.BooleanField(default=False)
+    braintree_id = models.CharField(max_length=150, blank=True)
 
     class Meta:
         ordering = ('-created',)
