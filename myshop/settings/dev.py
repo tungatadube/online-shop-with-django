@@ -1,6 +1,5 @@
-from django.core.mail import send_mail
-
 from braintree import Configuration, Environment
+from django.core.mail import send_mail
 
 import conf.parameters as secret
 from .base import *
@@ -36,7 +35,7 @@ if checks:
     except Exception as e:
         logger.info(f"{e}")
 
-#Braintree
+# Braintree
 BRAINTREE_MERCHANT_ID = secret.BRAINTREE_MERCHANT_ID
 BRAINTREE_PUBLIC_KEY = secret.BRAINTREE_PUBLIC_KEY
 BRAINTREE_PRIVATE_KEY = secret.BRAINTREE_PRIVATE_KEY

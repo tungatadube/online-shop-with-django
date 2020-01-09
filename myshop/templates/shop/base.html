@@ -15,6 +15,7 @@
 </div>
 <div id="subheader">
     <div class="cart">
+    <img src="{% static "img/cart.png" %}" height="25" width="25" >
         {% with total_items=cart|length %}
             {% if cart|length > 0 %}
                 Your cart:
