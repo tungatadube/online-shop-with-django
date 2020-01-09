@@ -5,5 +5,8 @@
 - Using Celery and RabbitMQ to asyncronously send orders to the admin email
 - Supports RestFramework API as well as template based API
 - Dependency management using virtual environments and pip
+- Download data of interest in csv format to power BI
+- Credit card payment gateway via Braintree
 - Credits:
-  - Django2byExample by Antonio Melé
+  - Django2byExample by Antonio Melé (Main Source)
+  - StackOverflow
