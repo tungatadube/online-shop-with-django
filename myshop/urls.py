@@ -18,11 +18,15 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('orders/', include('orders.urls', namespace='orders'), ),
     path('cart/', include(('cart.urls', 'cart'), namespace='cart')),
-    path('shop/', include(('shop.urls', 'shop'), namespace='shop'))
+    path('payment/', include('payment.urls', namespace='payment')),
+    path('shop/', include(('shop.urls', 'shop'), namespace='shop')),
+    path('favicon\.ico', RedirectView.as_view(url=f'{settings.STATIC_URL}/img/favicon.ico')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
