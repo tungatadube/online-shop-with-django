@@ -1,7 +1,7 @@
 from braintree import Configuration, Environment
 from django.core.mail import send_mail
 
-import conf.parameters as secret
+import myshop.config.parameters as secret
 from .base import *
 
 MEDIA_URL = BASE_DIR + "/media/"

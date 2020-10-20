@@ -82,7 +82,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'myshop.wsgi.application'
+# WSGI_APPLICATION = 'myshop.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -90,9 +90,9 @@ WSGI_APPLICATION = 'myshop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': db.get("default", None).get("NAME", None),
-        'USER': db.get("default", None).get("USER", None),
-        'PASSWORD': db.get("default", None).get("PASSWORD", None),
+        'NAME': db.get("NAME", None),
+        'USER': db.get("USER", None),
+        'PASSWORD': db.get("PASSWORD", None),
     }
 }
 

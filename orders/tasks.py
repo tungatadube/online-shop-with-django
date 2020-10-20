@@ -4,7 +4,7 @@ from celery import task
 
 from django.core.mail import send_mail
 from .models import Order
-from conf.parameters import username
+from myshop.config.parameters import username
 
 logger = logging.getLogger(__name__)
 @task
